@@ -5,16 +5,17 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--no-deprecation next build",
-    "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
-    "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
-    "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
-    "lint": "cross-env NODE_OPTIONS=--no-deprecation next lint",
-    "payload": "cross-env NODE_OPTIONS=--no-deprecation payload",
-    "start": "cross-env NODE_OPTIONS=--no-deprecation next start"
+    "build": "dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation next build",
+    "dev": "dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "devsafe": "rm -rf .next && dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation next dev",
+    "generate:importmap": "dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
+    "generate:types": "dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
+    "lint": "dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation next lint",
+    "payload": "dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation payload",
+    "start": "dotenvx run -f .env -- cross-env NODE_OPTIONS=--no-deprecation next start"
   },
   "dependencies": {
+    "@payloadcms/db-postgres": "beta",
     "@payloadcms/next": "beta",
     "@payloadcms/payload-cloud": "beta",
     "@payloadcms/richtext-lexical": "beta",
@@ -24,10 +25,10 @@
     "payload": "beta",
     "react": "19.0.0-rc-65a56d0e-20241020",
     "react-dom": "19.0.0-rc-65a56d0e-20241020",
-    "sharp": "0.32.6",
-    "@payloadcms/db-postgres": "beta"
+    "sharp": "0.32.6"
   },
   "devDependencies": {
+    "@dotenvx/dotenvx": "^1.21.0",
     "@types/node": "^22.5.4",
     "@types/react": "npm:types-react@19.0.0-rc.1",
     "@types/react-dom": "npm:types-react-dom@19.0.0-rc.1",
